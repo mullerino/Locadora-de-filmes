@@ -10,3 +10,11 @@ export const createMovie = async (data: ICreateMovie) =>{
 export const getMovies = async () =>{
     return await prisma.movie.findMany()
 }
+
+export const deleteMovie = async (idMovie: string)=>{
+    return await prisma.movie.delete({
+        where: {
+            id: idMovie
+        }
+    })
+}

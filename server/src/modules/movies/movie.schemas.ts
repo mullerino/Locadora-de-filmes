@@ -31,11 +31,21 @@ const getMovieResponse = z.object({
     ...movieGenerated
 })
 
+const deleteMovieSchema = z.object({
+    id: z.string()
+})
+
+const deleteMovieResponse = z.object({
+    ...movieInput
+})
+
 export type ICreateMovie = z.infer<typeof createMovieSchema>
 export type IGetMovies = z.infer<typeof getMovieResponse>
+export type IDeleteMovie = z.infer<typeof deleteMovieSchema>
 
 export const { schemas: moviesSchema, $ref} = buildJsonSchemas({
     createMovieSchema,
     createMovieResponse,
-    getMovieResponse
+    getMovieResponse,
+    deleteMovieResponse
 })

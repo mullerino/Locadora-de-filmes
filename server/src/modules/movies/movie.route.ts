@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { getMoviesHandler, registerMovieHandler } from "./movie.controller";
+import { deleteMovieHandler, getMoviesHandler, registerMovieHandler } from "./movie.controller";
 import { $ref } from "./movie.schemas";
 
 export const movieRoutes = async(server: FastifyInstance)=>{
@@ -19,4 +19,12 @@ export const movieRoutes = async(server: FastifyInstance)=>{
             } 
         }
     }, getMoviesHandler)
+
+    server.delete('/:id', {
+        schema: {
+            response: {
+                201: $ref('deleteMovieResponse')
+            }
+        }
+    }, deleteMovieHandler)
 }
