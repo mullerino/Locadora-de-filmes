@@ -1,5 +1,6 @@
+import { IByIdParam } from '../../utils/idType'
 import {prisma} from '../../utils/prisma'
-import { ICreateMovie } from './movie.schemas'
+import { ICreateMovie, IUpdateMovie } from './movie.schemas'
 
 export const createMovie = async (data: ICreateMovie) =>{
     return prisma.movie.create({
@@ -15,6 +16,17 @@ export const deleteMovie = async (idMovie: string)=>{
     return await prisma.movie.delete({
         where: {
             id: idMovie
+        }
+    })
+}
+
+export const updateMovie = async(data: IUpdateMovie, idMovie: string) =>{
+    return await prisma.movie.update({
+        where: {
+            id: idMovie
+        },
+        data: {
+            ...data
         }
     })
 }

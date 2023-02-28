@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { deleteMovieHandler, getMoviesHandler, registerMovieHandler } from "./movie.controller";
+import { deleteMovieHandler, getMoviesHandler, registerMovieHandler, updateMovieHandler } from "./movie.controller";
 import { $ref } from "./movie.schemas";
 
 export const movieRoutes = async(server: FastifyInstance)=>{
@@ -27,4 +27,13 @@ export const movieRoutes = async(server: FastifyInstance)=>{
             }
         }
     }, deleteMovieHandler)
+
+    server.put('/update/:id', {
+        schema: {
+            body: $ref('updateMovieSchema'),
+            response: {
+                201: $ref('updateMovieResponse')
+            }
+        }
+    }, updateMovieHandler)
 }
