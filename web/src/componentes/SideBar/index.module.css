@@ -1,0 +1,11 @@
+.logo{
+    width: 100%;
+}
+
+.logo img{
+    max-width: 200px;
+}
+
+.teste :first-of-type:hover{
+    color: rgb(255, 0, 212) !important;
+}
